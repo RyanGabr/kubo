@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 export function Sign() {
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center text-center gap-5 w-96">
+      <div className="flex flex-col items-center justify-center text-center gap-5 w-96 p-5 sm:p-0">
         <div className="flex flex-col gap-2">
           <h1 className="text-xl font-semibold">Iniciar sessão com Kubo</h1>
           <p className="text-foreground/50 text-xs font-medium">
