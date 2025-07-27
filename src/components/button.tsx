@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 // Default icon size to use => 16
 
 const buttonVariants = cva(
-  "flex items-center gap-1 text-xs font-medium rounded-md",
+  "flex items-center justify-center gap-1 text-xs font-medium rounded-md",
   {
     variants: {
       variant: {
@@ -17,6 +17,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "px-3 py-2",
+        md: "px-3 py-2.5",
         icon: "p-2"
       }
     },
