@@ -2,10 +2,14 @@ import { Button } from "@/components/button";
 import { Separator } from "@/components/ui/separator";
 import { useAuthRedirect } from "@/hooks/use-auth-redirect";
 import { supabase } from "@/lib/supabase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Auth() {
   useAuthRedirect();
+
+  useEffect(() => {
+    document.title = "Autenticação | Kubo";
+  }, []);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
