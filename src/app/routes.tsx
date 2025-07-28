@@ -1,8 +1,8 @@
-import { Sign } from "@/pages/auth/sign-in";
+import { Auth } from "@/pages/auth/auth";
 import { Home } from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
 
 export const routes = createBrowserRouter([
   { path: "/", element: <Home /> },
-  { path: "sign-in", element: <Sign /> },
+  { path: "auth", element: <Auth /> },
 ]);

@@ -1,7 +1,27 @@
 import { Button } from "@/components/button";
 import { Separator } from "@/components/ui/separator";
+import { useAuthRedirect } from "@/hooks/use-auth-redirect";
+import { supabase } from "@/lib/supabase";
+import { useState } from "react";
 
-export function Sign() {
+export function Auth() {
+  useAuthRedirect();
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+
+    if (error) {
+      console.error("Erro no login:", error.message);
+      setErrorMessage("Falha ao realizar a autenticação. Tente novamente");
+    } else {
+      setErrorMessage(null);
+    }
+  };
+
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center text-center gap-5 w-96 p-5 sm:p-0">
@@ -13,6 +33,7 @@ export function Sign() {
         </div>
         <Separator />
         <Button
+          onClick={handleGoogleLogin}
           variant="secondary"
           size="md"
           className="border border-border gap-1.5 w-full"
@@ -31,6 +52,11 @@ export function Sign() {
           </svg>
           Conectar com Google
         </Button>
+        {errorMessage && (
+          <span className="font-medium text-sm text-red-400">
+            {errorMessage}
+          </span>
+        )}
       </div>
     </div>
   );
