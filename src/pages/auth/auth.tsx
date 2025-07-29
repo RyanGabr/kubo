@@ -31,7 +31,7 @@ export function Auth() {
       <div className="flex flex-col items-center justify-center text-center gap-5 w-96 p-5 sm:p-0">
         <div className="flex flex-col gap-2">
           <h1 className="text-xl font-semibold">Iniciar sessão com Kubo</h1>
-          <p className="text-foreground/50 text-xs font-medium">
+          <p className="text-foreground/50 text-sm font-medium">
             Que bom ter você de volta!
           </p>
         </div>
