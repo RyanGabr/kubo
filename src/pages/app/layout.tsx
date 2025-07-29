@@ -10,6 +10,18 @@ import {
 } from "lucide-react";
 import { Outlet } from "react-router-dom";
 
+const workspaceItems = [
+  { label: "Visão geral", href: "/overview", icon: Brain },
+  { label: "Produtos", href: "/products", icon: BoxIcon },
+  { label: "Fornecedores", href: "/suppliers", icon: Truck },
+  { label: "Categorias", href: "/categories", icon: BlocksIcon },
+];
+
+const preferencesItems = [
+  { label: "Configurações", href: "/settings", icon: SettingsIcon },
+  { label: "Enviar feedback", href: "/feedback", icon: SendIcon },
+];
+
 export function Layout() {
   const user = useUser();
 
@@ -22,33 +34,41 @@ export function Layout() {
         />
         <Sidebar.GroupName>Área de trabalho</Sidebar.GroupName>
         <Sidebar.Group>
-          <Sidebar.Item href="overview">
-            <Brain size={17} />
-            Visão Geral
-          </Sidebar.Item>
-          <Sidebar.Item href="products">
-            <BoxIcon size={17} />
-            Produtos
-          </Sidebar.Item>
-          <Sidebar.Item href="suppliers">
-            <Truck size={17} />
-            Fornecedores
-          </Sidebar.Item>
-          <Sidebar.Item href="categories">
-            <BlocksIcon size={17} />
-            Categorias
-          </Sidebar.Item>
+          {workspaceItems.map((item, index) => {
+            const IconName = item.icon;
+
+            return (
+              <Sidebar.Item
+                href={item.href}
+                key={index}
+                className={
+                  location.pathname === item.href ? "bg-foreground/10" : ""
+                }
+              >
+                <IconName size={17} />
+                {item.label}
+              </Sidebar.Item>
+            );
+          })}
         </Sidebar.Group>
         <Sidebar.GroupName>Preferências</Sidebar.GroupName>
         <Sidebar.Group>
-          <Sidebar.Item href="settings">
-            <SettingsIcon size={17} />
-            Configurações
-          </Sidebar.Item>
-          <Sidebar.Item href="feedback">
-            <SendIcon size={17} />
-            Enviar feedback
-          </Sidebar.Item>
+          {preferencesItems.map((item, index) => {
+            const IconName = item.icon;
+
+            return (
+              <Sidebar.Item
+                href={item.href}
+                key={index}
+                className={
+                  location.pathname === item.href ? "bg-foreground/10" : ""
+                }
+              >
+                <IconName size={17} />
+                {item.label}
+              </Sidebar.Item>
+            );
+          })}
         </Sidebar.Group>
       </Sidebar.Root>
       <main className="flex-1 bg-foreground/2 max-h-full rounded border border-foreground/10 overflow-y-auto">
