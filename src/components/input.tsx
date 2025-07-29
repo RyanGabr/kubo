@@ -7,7 +7,7 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-background",
+        default: "bg-transparent",
         primary: "bg-foreground/5",
       },
       size: {
