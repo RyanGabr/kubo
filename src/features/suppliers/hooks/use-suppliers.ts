@@ -5,10 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 export function useSuppliers() {
   return useQuery<SuppliersType[]>({
     queryKey: ["suppliers"],
-    queryFn: async (): Promise<SuppliersType[]> => {
-      const { data } = await supabase.from("suppliers").select("*");
+    queryFn: async () => {
+      const { data, error } = await supabase.from("suppliers").select("*");
 
-      return data ?? [];
+      if (error) throw new Error(error.message);
+      return data;
     },
+    retry: false
   });
 }
