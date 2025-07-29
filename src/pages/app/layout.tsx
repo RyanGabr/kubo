@@ -22,30 +22,30 @@ export function Layout() {
         />
         <Sidebar.GroupName>Área de trabalho</Sidebar.GroupName>
         <Sidebar.Group>
-          <Sidebar.Item>
+          <Sidebar.Item href="overview">
             <Brain size={17} />
             Visão Geral
           </Sidebar.Item>
-          <Sidebar.Item>
+          <Sidebar.Item href="products">
             <BoxIcon size={17} />
             Produtos
           </Sidebar.Item>
-          <Sidebar.Item>
+          <Sidebar.Item href="suppliers">
             <Truck size={17} />
             Fornecedores
           </Sidebar.Item>
-          <Sidebar.Item>
+          <Sidebar.Item href="categories">
             <BlocksIcon size={17} />
             Categorias
           </Sidebar.Item>
         </Sidebar.Group>
         <Sidebar.GroupName>Preferências</Sidebar.GroupName>
         <Sidebar.Group>
-          <Sidebar.Item>
+          <Sidebar.Item href="settings">
             <SettingsIcon size={17} />
             Configurações
           </Sidebar.Item>
-          <Sidebar.Item>
+          <Sidebar.Item href="feedback">
             <SendIcon size={17} />
             Enviar feedback
           </Sidebar.Item>
