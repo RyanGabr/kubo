@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import type { SuppliersType } from "@/types/suppliers";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useSuppliers() {
   return useQuery<SuppliersType[]>({
@@ -11,6 +11,28 @@ export function useSuppliers() {
       if (error) throw new Error(error.message);
       return data;
     },
-    retry: false
+    retry: false,
+  });
+}
+
+export function useCreateSupplier() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (formData: any) => {
+      const { data, error } = await supabase
+        .from("suppliers")
+        .insert([formData])
+        .single();
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["suppliers"] });
+    },
   });
 }

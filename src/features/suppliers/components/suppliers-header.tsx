@@ -35,7 +35,7 @@ export function SuppliersHeader() {
       </div>
       <div className="flex items-center gap-3">
         <Popover>
-          <PopoverTrigger>
+          <PopoverTrigger asChild>
             <Button variant="ghost" className="text-foreground/60 p-1.5">
               <CircleQuestionMark size={16} className="text-foreground/60" />
             </Button>

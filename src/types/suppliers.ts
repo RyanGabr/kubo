@@ -1,3 +1,6 @@
+import type { createSupplierFormSchema } from "@/schemas/create-supplier-schema";
+import type z from "zod";
+
 export type SuppliersType = {
   id: string;
   name: string;
@@ -6,3 +9,5 @@ export type SuppliersType = {
   notes: string;
   owner_id: string;
 };
+
+export type SuppliersFormType = z.infer<typeof createSupplierFormSchema>;
