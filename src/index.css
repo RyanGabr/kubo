@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 * {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "inter-variable", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
