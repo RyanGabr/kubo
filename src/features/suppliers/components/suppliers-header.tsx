@@ -6,7 +6,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { CircleQuestionMark, Plus, Search, Truck, Zap } from "lucide-react";
+import { CircleQuestionMark, Search, Truck, Zap } from "lucide-react";
+import { SuppliersForm } from "../suppliers-form";
 
 export function SuppliersHeader() {
   return (
@@ -65,10 +66,7 @@ export function SuppliersHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <Button variant="outline">
-          <Plus size={16} />
-          Cadastrar fornecedor
-        </Button>
+        <SuppliersForm />
       </div>
     </div>
   );
