@@ -13,7 +13,8 @@ const buttonVariants = cva(
         secondary: "bg-foreground/10 text-foreground hover:bg-foreground/15",
         lime: "bg-lime-300 text-lime-950 hover:bg-lime-300/90",
         destructive: "bg-red-400 text-background hover:bg-red-400/90",
-        outline: "bg-transparent text-foreground border border-border hover:bg-foreground/5"
+        outline: "bg-transparent text-foreground border border-border hover:bg-foreground/5",
+        ghost: "bg-transparent hover:bg-foreground/10"
       },
       size: {
         default: "px-3 py-2",
