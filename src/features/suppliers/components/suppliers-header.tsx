@@ -66,7 +66,7 @@ export function SuppliersHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <SuppliersForm />
+        <SuppliersForm buttonVariant="outline"/>
       </div>
     </div>
   );

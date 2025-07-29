@@ -1,5 +1,5 @@
-import { Button } from "@/components/button";
-import { Plus, Truck } from "lucide-react";
+import { Truck } from "lucide-react";
+import { SuppliersForm } from "../suppliers-form";
 
 export function EmptySuppliers() {
   return (
@@ -17,9 +17,7 @@ export function EmptySuppliers() {
           </p>
         </div>
 
-        <Button className="w-fit" variant="lime">
-          <Plus size={16} /> Cadastrar fornecedor
-        </Button>
+        <SuppliersForm buttonVariant="lime"/>
       </div>
     </div>
   );

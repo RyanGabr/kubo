@@ -19,7 +19,9 @@ import { useUser } from "@supabase/auth-helpers-react";
 import { useState, useTransition } from "react";
 import { useCreateSupplier } from "./hooks/use-suppliers";
 
-export function SuppliersForm() {
+export function SuppliersForm({ buttonVariant }: {
+  buttonVariant: "default" | "destructive" | "lime" | "outline" | "ghost";
+}) {
   const user = useUser();
   const { mutate } = useCreateSupplier();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
@@ -63,7 +65,7 @@ export function SuppliersForm() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button variant={buttonVariant} className="w-fit">
           <Plus size={16} />
           Cadastrar fornecedor
         </Button>
