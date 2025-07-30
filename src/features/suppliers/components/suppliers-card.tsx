@@ -25,18 +25,13 @@ export function SuppliersCard({
     <ContextMenu>
       <ContextMenuTrigger>
         <div className="rounded-md border border-border bg-card flex flex-col hover:bg-foreground/7">
-          <div className="flex items-center gap-3 p-5 border-b">
-            <div className="p-1.5 rounded-md bg-green-300/10">
-              <Truck size={18} className="text-green-300" />
-            </div>
-            <div>
-              <strong className="font-medium text-sm truncate text-ellipsis max-w-80">
-                {name}
-              </strong>
-              <p className="font-medium text-xs text-foreground/50 truncate text-ellipsis max-w-80">
-                {notes}
-              </p>
-            </div>
+          <div className="p-5 border-b">
+            <strong className="font-medium text-sm truncate text-ellipsis max-w-80">
+              {name}
+            </strong>
+            <p className="font-medium text-xs text-foreground/50 truncate text-ellipsis max-w-80">
+              {notes}
+            </p>
           </div>
           <div className="px-5 py-3 flex items-center gap-2">
             <div className="px-2 py-1 border border-border rounded-md flex items-center gap-2 text-xs font-medium text-foreground/50">
