@@ -42,8 +42,8 @@ export function SuppliersHeader() {
           </PopoverTrigger>
           <PopoverContent align="end">
             <div className="flex flex-col gap-3">
-              <div className="p-1.5 rounded-md bg-lime-300/10 w-fit">
-                <Truck size={16} className="text-lime-300" />
+              <div className="p-1.5 rounded-md bg-green-300/10 w-fit">
+                <Truck size={16} className="text-green-300" />
               </div>
               <strong className="font-medium text-sm">
                 O que é a seção de fornecedores?
@@ -54,8 +54,8 @@ export function SuppliersHeader() {
                 controle e a organização das suas fontes de abastecimento.
               </p>
               <Separator />
-              <div className="p-1.5 rounded-md bg-lime-300/10 w-fit">
-                <CircleQuestionMark size={16} className="text-lime-300" />
+              <div className="p-1.5 rounded-md bg-green-300/10 w-fit">
+                <CircleQuestionMark size={16} className="text-green-300" />
               </div>
               <strong className="font-medium text-sm">Como editar ou excluir?</strong>
               <p className="font-medium text-xs text-foreground/50 leading-5">

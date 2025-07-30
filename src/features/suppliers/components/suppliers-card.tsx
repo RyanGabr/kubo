@@ -1,4 +1,4 @@
-import { Edit, Mail, Phone, Trash2, Truck } from "lucide-react";
+import { Edit, Trash2, Truck } from "lucide-react";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -24,27 +24,27 @@ export function SuppliersCard({
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <div className="p-5 rounded-md border border-border bg-card flex flex-col gap-5 hover:bg-foreground/7">
-          <div className="flex items-center gap-3">
-            <div className="p-1.5 rounded-md bg-lime-300/10">
-              <Truck size={18} className="text-lime-300"/>
+        <div className="rounded-md border border-border bg-card flex flex-col hover:bg-foreground/7">
+          <div className="flex items-center gap-3 p-5 border-b">
+            <div className="p-1.5 rounded-md bg-green-300/10">
+              <Truck size={18} className="text-green-300" />
             </div>
             <div>
-              <strong className="font-medium text-sm truncate text-ellipsis">
+              <strong className="font-medium text-sm truncate text-ellipsis max-w-80">
                 {name}
               </strong>
-              <p className="font-medium text-xs text-foreground/50">
-                {contact_email}
+              <p className="font-medium text-xs text-foreground/50 truncate text-ellipsis max-w-80">
+                {notes}
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <div className="px-2 py-1 text-xs font-medium text-foreground/70 border border-border rounded-md flex items-center gap-1 bg-foreground/5">
-              <Mail size={14} />
-              {notes}
+          <div className="px-5 py-3 flex items-center gap-2">
+            <div className="px-2 py-1 border border-border rounded-md flex items-center gap-2 text-xs font-medium text-foreground/50">
+              <div className="size-2 rounded-full bg-foreground/50"></div>
+              {contact_email}
             </div>
-            <div className="px-2 py-1 text-xs font-medium text-foreground/70 border border-border rounded-md flex items-center gap-1 bg-foreground/5">
-              <Phone size={14} />
+            <div className="px-2 py-1 border border-border rounded-md flex items-center gap-2 text-xs font-medium text-foreground/50">
+              <div className="size-2 rounded-full bg-foreground/50"></div>
               {phone}
             </div>
           </div>
