@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { Plus, Truck } from "lucide-react";
+import { Plus } from "lucide-react";
 import {
   Dialog,
   DialogTrigger,
@@ -18,6 +18,7 @@ import type { SuppliersFormType } from "@/types/suppliers";
 import { useUser } from "@supabase/auth-helpers-react";
 import { useState, useTransition } from "react";
 import { useCreateSupplier } from "./hooks/use-suppliers";
+import { TruckIcon } from "@heroicons/react/24/solid";
 
 export function CreateSupplierForm({
   buttonVariant,
@@ -75,7 +76,7 @@ export function CreateSupplierForm({
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <Truck size={16} className="text-indigo-400" />
+            <TruckIcon className="size-4 text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">
             Cadastrar fornecedor

@@ -2,13 +2,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOutIcon, Settings2Icon } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
+import { ArrowRightStartOnRectangleIcon, BoltIcon, UserIcon } from "@heroicons/react/24/solid";
 
 interface SidebarPerfilProps {
   avatarUrl: string;
@@ -48,15 +47,18 @@ export function SidebarPerfil({ avatarUrl, userFullName }: SidebarPerfilProps) {
           </div>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{userFullName}</DropdownMenuLabel>
+      <DropdownMenuContent align="start">
+        <DropdownMenuItem>
+          <BoltIcon />
+          Upgrade PRO
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Settings2Icon />
+          <UserIcon />
           Configurações da conta
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleLogout}>
-          <LogOutIcon />
+          <ArrowRightStartOnRectangleIcon />
           Sair
         </DropdownMenuItem>
       </DropdownMenuContent>

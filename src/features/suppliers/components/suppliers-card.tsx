@@ -1,12 +1,18 @@
 import {
   ContextMenu,
-  ContextMenuContent, ContextMenuLabel,
-  ContextMenuSeparator,
-  ContextMenuTrigger
+  ContextMenuContent, ContextMenuTrigger
 } from "@/components/ui/context-menu";
 import { UpdateSupplierForm } from "../update-supplier-form";
 import type { SuppliersType } from "@/types/suppliers";
 import { DeleteSupplier } from "../delete-supplier";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/button";
+import { Separator } from "@/components/ui/separator";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 interface SuppliersCardProps {
   supplier: SuppliersType;
@@ -16,8 +22,8 @@ export function SuppliersCard({ supplier }: SuppliersCardProps) {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <div className="rounded-md border border-border bg-card flex flex-col hover:bg-foreground/7">
-          <div className="p-5 border-b flex items-center gap-3">
+        <div className="p-5 rounded-md border border-border bg-card flex items-center justify-between hover:bg-foreground/4">
+          <div className="flex items-center gap-3">
             <div className="size-9 rounded-full bg-foreground/20 flex items-center justify-center">
               {supplier.name.split("")[0]}
             </div>
@@ -30,23 +36,43 @@ export function SuppliersCard({ supplier }: SuppliersCardProps) {
               </p>
             </div>
           </div>
-          <div className="px-5 py-3 flex items-center gap-2">
-            <div className="px-2 py-1 border border-border rounded-md flex items-center gap-2 text-xs font-medium text-foreground/50">
-              <div className="size-2 rounded-full bg-foreground/50"></div>
-              {supplier.contact_email}
-            </div>
-            <div className="px-2 py-1 border border-border rounded-md flex items-center gap-2 text-xs font-medium text-foreground/50">
-              <div className="size-2 rounded-full bg-foreground/50"></div>
-              {supplier.phone}
-            </div>
+          <div>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button size="icon" variant="ghost">
+                  <InformationCircleIcon className="size-5 text-foreground/30" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <div className="flex flex-col gap-3">
+                  <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
+                    <InformationCircleIcon className="size-4.5 text-indigo-400" />
+                  </div>
+                  <strong className="font-medium text-sm">
+                    Informações do fornecedor
+                  </strong>
+                  <p className="font-medium text-xs text-foreground/50 leading-5">
+                    Aqui estão informações para entrar em contato com este
+                    fornecedor.
+                  </p>
+                  <Separator />
+                  <div className="flex flex-col text-[13px] text-foreground/60">
+                    <span className="font-medium text-foreground">Email</span>
+                    {supplier.contact_email}
+                  </div>
+                  <div className="flex flex-col text-[13px] text-foreground/60">
+                    <span className="font-medium text-foreground">Telefone</span>
+                    {supplier.phone}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent className="min-w-44">
-        <ContextMenuLabel>{supplier.name}</ContextMenuLabel>
-        <ContextMenuSeparator />
         <UpdateSupplierForm supplier={supplier} />
-        <DeleteSupplier supplier={supplier}/>
+        <DeleteSupplier supplier={supplier} />
       </ContextMenuContent>
     </ContextMenu>
   );

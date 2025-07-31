@@ -1,12 +1,12 @@
-import { Truck } from "lucide-react";
 import { CreateSupplierForm } from "../create-supplier-form";
+import { TruckIcon } from "@heroicons/react/24/solid";
 
 export function EmptySuppliers() {
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="w-1/3 flex flex-col gap-8">
         <div className="p-2 rounded-lg bg-indigo-400/20 w-fit">
-          <Truck className="text-indigo-400" />
+          <TruckIcon className="size-6 text-indigo-400" />
         </div>
         <div className="space-y-3">
           <h3 className="font-medium text-base">Fornecedores</h3>

@@ -1,25 +1,25 @@
 import { Sidebar } from "@/components/layout/sidebar";
 import { useUser } from "@supabase/auth-helpers-react";
-import {
-  BlocksIcon,
-  BoxIcon,
-  Brain,
-  SendIcon,
-  SettingsIcon,
-  Truck,
-} from "lucide-react";
 import { Outlet } from "react-router-dom";
+import {
+  Square3Stack3DIcon,
+  CubeIcon,
+  TruckIcon,
+  TagIcon,
+  Cog6ToothIcon,
+  PaperAirplaneIcon,
+} from "@heroicons/react/24/solid";
 
 const workspaceItems = [
-  { label: "Visão geral", href: "/overview", icon: Brain },
-  { label: "Produtos", href: "/products", icon: BoxIcon },
-  { label: "Fornecedores", href: "/suppliers", icon: Truck },
-  { label: "Categorias", href: "/categories", icon: BlocksIcon },
+  { label: "Visão geral", href: "/overview", icon: Square3Stack3DIcon },
+  { label: "Produtos", href: "/products", icon: CubeIcon },
+  { label: "Fornecedores", href: "/suppliers", icon: TruckIcon },
+  { label: "Categorias", href: "/categories", icon: TagIcon },
 ];
 
 const preferencesItems = [
-  { label: "Configurações", href: "/settings", icon: SettingsIcon },
-  { label: "Enviar feedback", href: "/feedback", icon: SendIcon },
+  { label: "Configurações", href: "/settings", icon: Cog6ToothIcon },
+  { label: "Enviar feedback", href: "/feedback", icon: PaperAirplaneIcon },
 ];
 
 export function Layout() {
@@ -45,7 +45,7 @@ export function Layout() {
                   location.pathname === item.href ? "bg-foreground/10" : ""
                 }
               >
-                <IconName size={17} />
+                <IconName className="size-4.5 text-foreground/60" />
                 {item.label}
               </Sidebar.Item>
             );
@@ -64,14 +64,14 @@ export function Layout() {
                   location.pathname === item.href ? "bg-foreground/10" : ""
                 }
               >
-                <IconName size={17} />
+                <IconName className="size-4.5 text-foreground/60" />
                 {item.label}
               </Sidebar.Item>
             );
           })}
         </Sidebar.Group>
       </Sidebar.Root>
-      <main className="flex-1 bg-foreground/2 max-h-full rounded border border-foreground/10 overflow-y-auto">
+      <main className="flex-1 bg-card/50 max-h-full rounded border border-foreground/10 overflow-y-auto">
         <Outlet />
       </main>
     </div>
