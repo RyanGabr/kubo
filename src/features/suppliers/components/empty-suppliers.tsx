@@ -5,8 +5,8 @@ export function EmptySuppliers() {
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="w-1/3 flex flex-col gap-8">
-        <div className="p-2 rounded-lg bg-green-300/20 w-fit">
-          <Truck className="text-green-300" />
+        <div className="p-2 rounded-lg bg-indigo-400/20 w-fit">
+          <Truck className="text-indigo-400" />
         </div>
         <div className="space-y-3">
           <h3 className="font-medium text-base">Fornecedores</h3>
@@ -17,7 +17,7 @@ export function EmptySuppliers() {
           </p>
         </div>
 
-        <SuppliersForm buttonVariant="green"/>
+        <SuppliersForm buttonVariant="indigo"/>
       </div>
     </div>
   );

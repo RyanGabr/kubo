@@ -22,7 +22,7 @@ import { useCreateSupplier } from "./hooks/use-suppliers";
 export function SuppliersForm({
   buttonVariant,
 }: {
-  buttonVariant: "default" | "destructive" | "green" | "outline" | "ghost";
+  buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";
 }) {
   const user = useUser();
   const { mutate } = useCreateSupplier();
@@ -74,8 +74,8 @@ export function SuppliersForm({
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
-          <div className="bg-green-300/10 rounded-md p-1 w-fit">
-            <Truck size={16} className="text-green-300" />
+          <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
+            <Truck size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">
             Cadastrar fornecedor
@@ -168,7 +168,7 @@ export function SuppliersForm({
           <Button
             type="submit"
             form="create-supplier-form"
-            variant="green"
+            variant="indigo"
             disabled={isPending}
           >
             Cadastrar
