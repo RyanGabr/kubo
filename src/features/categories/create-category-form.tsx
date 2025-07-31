@@ -21,8 +21,8 @@ import { categoryFormSchema } from "@/schemas/categories-schema";
 import type { CategoriesFormType } from "@/types/categories";
 import { TagIcon } from "@heroicons/react/24/solid";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus } from "lucide-react";
-import { useState, useTransition } from "react";
+import { Loader2Icon, Plus } from "lucide-react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useCreateCategory } from "./hooks/use-categories";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -33,9 +33,8 @@ export function CreateCategoryForm({
   buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";
 }) {
   const user = useUser();
-  const { mutate } = useCreateCategory();
+  const { mutateAsync, isPending } = useCreateCategory();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
 
   const {
     register,
@@ -47,18 +46,20 @@ export function CreateCategoryForm({
     resolver: zodResolver(categoryFormSchema),
   });
 
-  function createCategory(data: CategoriesFormType) {
-    startTransition(() => {
-      mutate({
+  async function createCategory(data: CategoriesFormType) {
+    try {
+      await mutateAsync({
         name: data.name,
         color: data.color,
         description: data.description,
         owner_id: user?.id!,
       });
-    });
 
-    setDialogIsOpen(false);
-    setTimeout(() => reset(), 500);
+      setDialogIsOpen(false);
+      setTimeout(() => reset(), 500);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -174,12 +175,8 @@ export function CreateCategoryForm({
               Cancelar
             </Button>
           </DialogClose>
-          <Button
-            type="submit"
-            form="create-supplier-form"
-            variant="indigo"
-            disabled={isPending}
-          >
+          <Button type="submit" form="create-supplier-form" variant="indigo">
+            {isPending && <Loader2Icon size={16} className="animate-spin"/>}
             Criar
           </Button>
         </DialogFooter>
