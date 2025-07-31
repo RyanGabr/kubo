@@ -31,7 +31,7 @@ export function SuppliersHeader() {
           <Input
             placeholder="Encontrar fornecedor"
             variant="primary"
-            className="w-52 pl-6.5 py-1"
+            className="w-52 pl-6.5 py-1.5 text-xs"
             onChange={(e) => setSearchParams({ search: e.target.value })}
           />
         </div>
@@ -40,7 +40,7 @@ export function SuppliersHeader() {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" className="text-foreground/60 p-1.5">
-              <QuestionMarkCircleIcon className="size-4.5 text-foreground/60" />
+              <QuestionMarkCircleIcon className="size-4.5 text-foreground/40" />
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end">

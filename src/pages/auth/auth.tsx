@@ -2,6 +2,7 @@ import { Button } from "@/components/button";
 import { Separator } from "@/components/ui/separator";
 import { useAuthRedirect } from "@/hooks/use-auth-redirect";
 import { supabase } from "@/lib/supabase";
+import { CubeTransparentIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
 export function Auth() {
@@ -29,18 +30,19 @@ export function Auth() {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center text-center gap-5 w-96 p-5 sm:p-0">
+        <CubeTransparentIcon className="size-14 text-indigo-400"/>
         <div className="flex flex-col gap-2">
           <h1 className="text-xl font-semibold">Iniciar sessão com Kubo</h1>
-          <p className="text-foreground/50 text-sm font-medium">
+          <p className="text-foreground/50 text-sm">
             Que bom ter você de volta!
           </p>
         </div>
         <Separator />
         <Button
           onClick={handleGoogleLogin}
-          variant="secondary"
+          variant="indigo"
           size="md"
-          className="border border-border gap-1.5 w-full"
+          className="gap-1.5 w-full"
         >
           <svg
             className="w-4 fill-foreground"
