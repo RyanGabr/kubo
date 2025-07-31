@@ -1,5 +1,5 @@
 import { Truck } from "lucide-react";
-import { SuppliersForm } from "../suppliers-form";
+import { CreateSupplierForm } from "../create-supplier-form";
 
 export function EmptySuppliers() {
   return (
@@ -17,7 +17,7 @@ export function EmptySuppliers() {
           </p>
         </div>
 
-        <SuppliersForm buttonVariant="indigo"/>
+        <CreateSupplierForm buttonVariant="indigo"/>
       </div>
     </div>
   );

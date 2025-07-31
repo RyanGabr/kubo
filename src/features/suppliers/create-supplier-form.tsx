@@ -19,7 +19,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import { useState, useTransition } from "react";
 import { useCreateSupplier } from "./hooks/use-suppliers";
 
-export function SuppliersForm({
+export function CreateSupplierForm({
   buttonVariant,
 }: {
   buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";

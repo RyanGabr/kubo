@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { CircleQuestionMark, Search, Truck, Zap } from "lucide-react";
-import { SuppliersForm } from "../suppliers-form";
+import { CreateSupplierForm } from "../create-supplier-form";
 import { useSearchParams } from "react-router-dom";
 
 export function SuppliersHeader() {
@@ -72,7 +72,7 @@ export function SuppliersHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <SuppliersForm buttonVariant="outline" />
+        <CreateSupplierForm buttonVariant="outline" />
       </div>
     </div>
   );
