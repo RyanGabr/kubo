@@ -25,6 +25,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useUpdateCategory } from "./hooks/use-categories";
+import { Loader2Icon } from "lucide-react";
 
 interface UpdateCategoryProps {
   category: CategoriesType;
@@ -32,7 +33,7 @@ interface UpdateCategoryProps {
 
 export function UpdateCategory({ category }: UpdateCategoryProps) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const { mutate } = useUpdateCategory();
+  const { mutateAsync, isPending } = useUpdateCategory();
 
   const {
     register,
@@ -44,16 +45,20 @@ export function UpdateCategory({ category }: UpdateCategoryProps) {
     resolver: zodResolver(categoryFormSchema),
   });
 
-  function updateCategory(data: CategoriesFormType) {
-    mutate({
-      name: data.name,
-      color: data.color,
-      description: data.description,
-      id: category.id
-    });
+  async function updateCategory(data: CategoriesFormType) {
+    try {
+      await mutateAsync({
+        name: data.name,
+        color: data.color,
+        description: data.description,
+        id: category.id,
+      });
 
-    setDialogIsOpen(false);
-    setTimeout(() => reset(), 500);
+      setDialogIsOpen(false);
+      setTimeout(() => reset(), 500);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -174,12 +179,8 @@ export function UpdateCategory({ category }: UpdateCategoryProps) {
               Cancelar
             </Button>
           </DialogClose>
-          <Button
-            type="submit"
-            form="create-supplier-form"
-            variant="indigo"
-            // disabled={isPending}
-          >
+          <Button type="submit" form="create-supplier-form" variant="indigo">
+            {isPending && <Loader2Icon size={16} className="animate-spin" />}
             Editar
           </Button>
         </DialogFooter>

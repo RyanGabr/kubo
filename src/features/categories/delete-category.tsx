@@ -14,6 +14,7 @@ import type { CategoriesType } from "@/types/categories";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useDeleteCategory } from "./hooks/use-categories";
+import { Loader2Icon } from "lucide-react";
 
 interface DeleteCategoryProps {
   category: CategoriesType;
@@ -21,10 +22,10 @@ interface DeleteCategoryProps {
 
 export function DeleteCategory({ category }: DeleteCategoryProps) {
   const [dialogIsOpen, setIsDialogOpen] = useState(false);
-  const { mutate } = useDeleteCategory();
+  const { mutateAsync, isPending } = useDeleteCategory();
 
-  function deleteCategory(){
-    mutate(category.id);
+  function deleteCategory() {
+    mutateAsync(category.id);
   }
 
   return (
@@ -63,6 +64,7 @@ export function DeleteCategory({ category }: DeleteCategoryProps) {
             form="create-supplier-form"
             variant="indigo"
           >
+            {isPending && <Loader2Icon size={16} className="animate-spin" />}
             Deletar
           </Button>
         </DialogFooter>
