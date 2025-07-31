@@ -1,5 +1,9 @@
 import { supabase } from "@/lib/supabase";
-import type { CategoriesType, CreateCategoryType } from "@/types/categories";
+import type {
+  CategoriesType,
+  CreateCategoryType,
+  UpdateCategoryType,
+} from "@/types/categories";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
@@ -40,6 +44,45 @@ export function useCreateCategory() {
       }
 
       return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["categories"] });
+    },
+  });
+}
+
+export function useUpdateCategory() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (data: UpdateCategoryType) => {
+      const { error } = await supabase
+        .from("categories")
+        .update({
+          name: data.name,
+          color: data.color,
+          description: data.description,
+        })
+        .eq("id", data.id);
+
+      if (error) {
+        console.log("Erro ao editar: ", error.message);
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["categories"] });
+    },
+  });
+}
+
+export function useDeleteCategory() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("categories").delete().eq("id", id);
+
+      if (error) throw new Error(error.message);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["categories"] });

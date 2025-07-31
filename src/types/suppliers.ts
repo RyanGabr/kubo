@@ -12,6 +12,8 @@ export type SuppliersType = {
 
 export type SuppliersFormType = z.infer<typeof supplierFormSchema>;
 
+// Refactor: Use Omit
+
 export type CreateSupplierType = {
   name: string;
   contact_email: string;

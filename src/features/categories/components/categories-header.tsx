@@ -60,8 +60,8 @@ export function CategoriesHeader() {
                 Como editar ou excluir?
               </strong>
               <p className="font-medium text-xs text-foreground/50 leading-5">
-                Para editar ou excluir um fornecedor, basta clicar com o botão
-                direito do mouse em cima do fornecedor correspondente e escolher
+                Para editar ou excluir uma categoria, basta clicar com o botão
+                direito do mouse em cima da categoria correspondente e escolher
                 entre as opções disponíveis.
               </p>
             </div>

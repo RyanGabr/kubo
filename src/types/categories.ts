@@ -11,9 +11,6 @@ export type CategoriesType = {
 
 export type CategoriesFormType = z.infer<typeof categoryFormSchema>
 
-export type CreateCategoryType = {
-  name: string;
-  color: string;
-  description: string;
-  owner_id: string;
-}
+export type CreateCategoryType = Omit<CategoriesType, "id">;
+
+export type UpdateCategoryType = Omit<CategoriesType, "owner_id">;
