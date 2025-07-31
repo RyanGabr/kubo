@@ -14,6 +14,7 @@ import type { SuppliersType } from "@/types/suppliers";
 import { useState } from "react";
 import { useDeleteSupplier } from "./hooks/use-suppliers";
 import { TrashIcon } from "@heroicons/react/24/solid";
+import { Loader2Icon } from "lucide-react";
 
 interface DeleteSupplierProps {
   supplier: SuppliersType;
@@ -21,10 +22,15 @@ interface DeleteSupplierProps {
 
 export function DeleteSupplier({ supplier }: DeleteSupplierProps) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const { mutate } = useDeleteSupplier();
+  const { mutateAsync, isPending } = useDeleteSupplier();
 
-  function deleteSupplier() {
-    mutate(supplier.id);
+  async function deleteSupplier() {
+    try {
+      await mutateAsync(supplier.id);
+      setDialogIsOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -36,7 +42,7 @@ export function DeleteSupplier({ supplier }: DeleteSupplierProps) {
             e.preventDefault();
           }}
         >
-          <TrashIcon className="size-3.5"/>
+          <TrashIcon className="size-3.5" />
           Deletar
         </ContextMenuItem>
       </DialogTrigger>
@@ -63,6 +69,7 @@ export function DeleteSupplier({ supplier }: DeleteSupplierProps) {
             form="create-supplier-form"
             variant="indigo"
           >
+            {isPending && <Loader2Icon size={16} className="animate-spin" />}
             Excluir
           </Button>
         </DialogFooter>

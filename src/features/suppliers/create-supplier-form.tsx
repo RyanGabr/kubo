@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { Plus } from "lucide-react";
+import { Loader2Icon, Plus } from "lucide-react";
 import {
   Dialog,
   DialogTrigger,
@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { supplierFormSchema } from "@/schemas/supplier-schema";
 import type { SuppliersFormType } from "@/types/suppliers";
 import { useUser } from "@supabase/auth-helpers-react";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useCreateSupplier } from "./hooks/use-suppliers";
 import { TruckIcon } from "@heroicons/react/24/solid";
 
@@ -26,9 +26,8 @@ export function CreateSupplierForm({
   buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";
 }) {
   const user = useUser();
-  const { mutate } = useCreateSupplier();
+  const { mutateAsync, isPending } = useCreateSupplier();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
 
   const {
     register,
@@ -48,21 +47,23 @@ export function CreateSupplierForm({
       .replace(/(-\d{4})\d+?$/, "$1");
   }
 
-  function handleCreateSupplier(data: SuppliersFormType) {
+  async function handleCreateSupplier(data: SuppliersFormType) {
     const ownerId = user?.id;
 
-    startTransition(() => {
-      mutate({
+    try {
+      await mutateAsync({
         name: data.name,
         contact_email: data.contact_email,
         phone: data.phone,
         notes: data.notes,
         owner_id: ownerId!,
       });
-    });
 
-    setDialogIsOpen(false);
-    reset();
+      setDialogIsOpen(false);
+      reset();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -166,12 +167,8 @@ export function CreateSupplierForm({
               Cancelar
             </Button>
           </DialogClose>
-          <Button
-            type="submit"
-            form="create-supplier-form"
-            variant="indigo"
-            disabled={isPending}
-          >
+          <Button type="submit" form="create-supplier-form" variant="indigo">
+            {isPending && <Loader2Icon size={16} className="animate-spin" />}
             Cadastrar
           </Button>
         </DialogFooter>

@@ -14,10 +14,11 @@ import { Label } from "@/components/ui/label";
 import { supplierFormSchema } from "@/schemas/supplier-schema";
 import type { SuppliersFormType, SuppliersType } from "@/types/suppliers";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUpdateSupplier } from "./hooks/use-suppliers";
 import { PencilIcon } from "@heroicons/react/24/solid";
+import { Loader2Icon } from "lucide-react";
 
 interface UpdateSupplierFormProps {
   supplier: SuppliersType;
@@ -25,8 +26,7 @@ interface UpdateSupplierFormProps {
 
 export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-  const { mutate } = useUpdateSupplier();
-  const [isPending, startTransition] = useTransition();
+  const { mutateAsync, isPending } = useUpdateSupplier();
 
   const {
     register,
@@ -46,19 +46,21 @@ export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
       .replace(/(-\d{4})\d+?$/, "$1");
   }
 
-  function handleUpdateSupplier(data: SuppliersFormType) {
-    startTransition(() => {
-      mutate({
+  async function handleUpdateSupplier(data: SuppliersFormType) {
+    try {
+      await mutateAsync({
         name: data.name,
         contact_email: data.contact_email,
         phone: data.phone,
         notes: data.notes,
         id: supplier.id,
       });
-    });
 
-    setDialogIsOpen(false);
-    setTimeout(() => reset(), 500);
+      setDialogIsOpen(false);
+      setTimeout(() => reset(), 500);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -70,7 +72,7 @@ export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
             e.preventDefault();
           }}
         >
-          <PencilIcon className="size-3.5"/>
+          <PencilIcon className="size-3.5" />
           Editar
         </ContextMenuItem>
       </DialogTrigger>
@@ -173,8 +175,8 @@ export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
             type="submit"
             form="create-supplier-form"
             variant="indigo"
-            disabled={isPending}
           >
+            {isPending && <Loader2Icon size={16} className="animate-spin" />}
             Editar
           </Button>
         </DialogFooter>
