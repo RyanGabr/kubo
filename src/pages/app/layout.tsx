@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/layout/sidebar";
 import { useUser } from "@supabase/auth-helpers-react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import {
   Square3Stack3DIcon,
   CubeIcon,
@@ -24,6 +24,8 @@ const preferencesItems = [
 
 export function Layout() {
   const user = useUser();
+
+  const location = useLocation();
 
   return (
     <div className="flex p-2 h-screen">
