@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import type { SuppliersType } from "@/types/suppliers";
+import type { CreateSupplierType, SuppliersType, UpdateSupplierType } from "@/types/suppliers";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
@@ -29,7 +29,7 @@ export function useCreateSupplier() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (formData: any) => {
+    mutationFn: async (formData: CreateSupplierType) => {
       const { data, error } = await supabase
         .from("suppliers")
         .insert([formData])
@@ -51,7 +51,7 @@ export function useUpdateSupplier() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: any) => {
+    mutationFn: async (data: UpdateSupplierType) => {
       const { error } = await supabase
         .from("suppliers")
         .update({

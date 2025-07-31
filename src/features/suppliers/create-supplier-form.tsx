@@ -56,7 +56,7 @@ export function CreateSupplierForm({
         contact_email: data.contact_email,
         phone: data.phone,
         notes: data.notes,
-        owner_id: ownerId,
+        owner_id: ownerId!,
       });
     });
 
