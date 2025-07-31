@@ -49,10 +49,7 @@ export function SuppliersList() {
       {suppliers?.map((supplier) => (
         <SuppliersCard
           key={supplier.id}
-          name={supplier.name}
-          contact_email={supplier.contact_email}
-          notes={supplier.notes}
-          phone={supplier.phone}
+          supplier={supplier}
         />
       ))}
     </div>
