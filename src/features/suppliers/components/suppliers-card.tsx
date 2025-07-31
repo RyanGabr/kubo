@@ -1,4 +1,4 @@
-import { Edit, Trash2, Truck } from "lucide-react";
+import { Edit, Trash2 } from "lucide-react";
 import {
   ContextMenu,
   ContextMenuContent,

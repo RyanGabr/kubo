@@ -19,7 +19,9 @@ import { useUser } from "@supabase/auth-helpers-react";
 import { useState, useTransition } from "react";
 import { useCreateSupplier } from "./hooks/use-suppliers";
 
-export function SuppliersForm({ buttonVariant }: {
+export function SuppliersForm({
+  buttonVariant,
+}: {
   buttonVariant: "default" | "destructive" | "green" | "outline" | "ghost";
 }) {
   const user = useUser();
@@ -156,7 +158,12 @@ export function SuppliersForm({ buttonVariant }: {
         </form>
         <DialogFooter className="p-5 gap-3">
           <DialogClose asChild>
-            <Button variant="secondary">Cancelar</Button>
+            <Button
+              variant="secondary"
+              onClick={() => setTimeout(() => reset(), 500)}
+            >
+              Cancelar
+            </Button>
           </DialogClose>
           <Button
             type="submit"
