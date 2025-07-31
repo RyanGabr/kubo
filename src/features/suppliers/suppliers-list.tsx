@@ -2,9 +2,13 @@ import { useSuppliers } from "./hooks/use-suppliers";
 import { EmptySuppliers } from "./components/empty-suppliers";
 import { SuppliersCard } from "./components/suppliers-card";
 import { LoaderCircleIcon, TriangleAlert } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 export function SuppliersList() {
   const { data: suppliers, isLoading, isError } = useSuppliers();
+  const [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
 
   if (isLoading) {
     return (
@@ -27,6 +31,16 @@ export function SuppliersList() {
   }
 
   if (suppliers?.length === 0) {
+    if (search) {
+      return (
+        <div className="h-full w-full flex flex-col gap-2 items-center justify-center">
+          <TriangleAlert className="text-foreground/50" />
+          <h1 className="text-foreground/50 font-medium text-sm text-center">
+            Fornecedor não encontrado.
+          </h1>
+        </div>
+      );
+    }
     return <EmptySuppliers />;
   }
 

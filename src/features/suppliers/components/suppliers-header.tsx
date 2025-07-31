@@ -8,8 +8,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { CircleQuestionMark, Search, Truck, Zap } from "lucide-react";
 import { SuppliersForm } from "../suppliers-form";
+import { useSearchParams } from "react-router-dom";
 
 export function SuppliersHeader() {
+  const [_, setSearchParams] = useSearchParams();
+
   return (
     <div className="w-full py-2 px-6 flex items-center justify-between border-b border-border">
       <div className="flex items-center gap-3">
@@ -30,6 +33,7 @@ export function SuppliersHeader() {
             placeholder="Encontrar fornecedor"
             variant="primary"
             className="w-52 pl-6.5 py-1"
+            onChange={(e) => setSearchParams({ search: e.target.value })}
           />
         </div>
       </div>
@@ -57,7 +61,9 @@ export function SuppliersHeader() {
               <div className="p-1.5 rounded-md bg-green-300/10 w-fit">
                 <CircleQuestionMark size={16} className="text-green-300" />
               </div>
-              <strong className="font-medium text-sm">Como editar ou excluir?</strong>
+              <strong className="font-medium text-sm">
+                Como editar ou excluir?
+              </strong>
               <p className="font-medium text-xs text-foreground/50 leading-5">
                 Para editar ou excluir um fornecedor, basta clicar com o botão
                 direito do mouse em cima do fornecedor correspondente e escolher
@@ -66,7 +72,7 @@ export function SuppliersHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <SuppliersForm buttonVariant="outline"/>
+        <SuppliersForm buttonVariant="outline" />
       </div>
     </div>
   );

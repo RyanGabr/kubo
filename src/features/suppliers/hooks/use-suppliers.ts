@@ -1,12 +1,22 @@
 import { supabase } from "@/lib/supabase";
 import type { SuppliersType } from "@/types/suppliers";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 
 export function useSuppliers() {
+  const [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
+  let query = supabase.from("suppliers").select("*");
+
   return useQuery<SuppliersType[]>({
-    queryKey: ["suppliers"],
+    queryKey: ["suppliers", search],
     queryFn: async () => {
-      const { data, error } = await supabase.from("suppliers").select("*");
+      if (search) {
+        query = query.ilike("name", `%${search}%`);
+      }
+
+      const { data, error } = await query;
 
       if (error) throw new Error(error.message);
       return data;
