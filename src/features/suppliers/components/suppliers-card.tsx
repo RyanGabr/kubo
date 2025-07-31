@@ -1,22 +1,18 @@
-import { Trash2 } from "lucide-react";
 import {
   ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuLabel,
+  ContextMenuContent, ContextMenuLabel,
   ContextMenuSeparator,
-  ContextMenuTrigger,
+  ContextMenuTrigger
 } from "@/components/ui/context-menu";
 import { UpdateSupplierForm } from "../update-supplier-form";
 import type { SuppliersType } from "@/types/suppliers";
+import { DeleteSupplier } from "../delete-supplier";
 
 interface SuppliersCardProps {
-  supplier: SuppliersType
+  supplier: SuppliersType;
 }
 
-export function SuppliersCard({
-  supplier
-}: SuppliersCardProps) {
+export function SuppliersCard({ supplier }: SuppliersCardProps) {
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -49,11 +45,8 @@ export function SuppliersCard({
       <ContextMenuContent className="min-w-44">
         <ContextMenuLabel>{supplier.name}</ContextMenuLabel>
         <ContextMenuSeparator />
-        <UpdateSupplierForm supplier={supplier}/>
-        <ContextMenuItem>
-          <Trash2 />
-          Deletar
-        </ContextMenuItem>
+        <UpdateSupplierForm supplier={supplier} />
+        <DeleteSupplier supplier={supplier}/>
       </ContextMenuContent>
     </ContextMenu>
   );
