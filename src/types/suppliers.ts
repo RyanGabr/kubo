@@ -1,4 +1,4 @@
-import type { createSupplierFormSchema } from "@/schemas/create-supplier-schema";
+import type { supplierFormSchema } from "@/schemas/supplier-schema";
 import type z from "zod";
 
 export type SuppliersType = {
@@ -10,4 +10,4 @@ export type SuppliersType = {
   owner_id: string;
 };
 
-export type SuppliersFormType = z.infer<typeof createSupplierFormSchema>;
+export type SuppliersFormType = z.infer<typeof supplierFormSchema>;

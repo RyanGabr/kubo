@@ -49,7 +49,7 @@ export function SuppliersCard({
       <ContextMenuContent className="min-w-44">
         <ContextMenuLabel>{supplier.name}</ContextMenuLabel>
         <ContextMenuSeparator />
-        <UpdateSupplierForm />
+        <UpdateSupplierForm supplier={supplier}/>
         <ContextMenuItem>
           <Trash2 />
           Deletar

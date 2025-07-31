@@ -46,3 +46,28 @@ export function useCreateSupplier() {
     },
   });
 }
+
+export function useUpdateSupplier() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (data: any) => {
+      const { error } = await supabase
+        .from("suppliers")
+        .update({
+          name: data.name,
+          contact_email: data.contact_email,
+          phone: data.phone,
+          notes: data.notes,
+        })
+        .eq("id", data.id);
+
+      if (error) {
+        console.log("Erro ao editar: ", error.message);
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["suppliers"] });
+    },
+  });
+}

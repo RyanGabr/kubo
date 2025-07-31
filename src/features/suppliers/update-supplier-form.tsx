@@ -1,32 +1,31 @@
 import { Button } from "@/components/button";
-import { Plus, Truck } from "lucide-react";
+import { Input } from "@/components/input";
+import { ContextMenuItem } from "@/components/ui/context-menu";
 import {
   Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
   DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { supplierFormSchema } from "@/schemas/supplier-schema";
-import type { SuppliersFormType } from "@/types/suppliers";
-import { useUser } from "@supabase/auth-helpers-react";
+import type { SuppliersFormType, SuppliersType } from "@/types/suppliers";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Edit } from "lucide-react";
 import { useState, useTransition } from "react";
-import { useCreateSupplier } from "./hooks/use-suppliers";
+import { useForm } from "react-hook-form";
+import { useUpdateSupplier } from "./hooks/use-suppliers";
 
-export function CreateSupplierForm({
-  buttonVariant,
-}: {
-  buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";
-}) {
-  const user = useUser();
-  const { mutate } = useCreateSupplier();
+interface UpdateSupplierFormProps {
+  supplier: SuppliersType;
+}
+
+export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
+  const { mutate } = useUpdateSupplier();
   const [isPending, startTransition] = useTransition();
 
   const {
@@ -47,42 +46,43 @@ export function CreateSupplierForm({
       .replace(/(-\d{4})\d+?$/, "$1");
   }
 
-  function handleCreateSupplier(data: SuppliersFormType) {
-    const ownerId = user?.id;
-
+  function handleUpdateSupplier(data: SuppliersFormType) {
     startTransition(() => {
       mutate({
         name: data.name,
         contact_email: data.contact_email,
         phone: data.phone,
         notes: data.notes,
-        owner_id: ownerId,
+        id: supplier.id,
       });
     });
 
     setDialogIsOpen(false);
-    reset();
+    setTimeout(() => reset(), 500);
   }
 
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button variant={buttonVariant} className="w-fit">
-          <Plus size={16} />
-          Cadastrar fornecedor
-        </Button>
+        <ContextMenuItem
+          onClick={(e) => {
+            setDialogIsOpen(true);
+            e.preventDefault();
+          }}
+        >
+          <Edit />
+          Editar
+        </ContextMenuItem>
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <Truck size={16} className="text-indigo-400" />
+            <Edit size={16} className="text-indigo-400" />
           </div>
-          <DialogTitle className="text-sm font-medium">
-            Cadastrar fornecedor
-          </DialogTitle>
+          <DialogTitle className="text-sm font-medium">Editar</DialogTitle>
         </DialogHeader>
         <form
-          onSubmit={handleSubmit(handleCreateSupplier)}
+          onSubmit={handleSubmit(handleUpdateSupplier)}
           className="p-5 space-y-3 border-b"
           id="create-supplier-form"
         >
@@ -91,6 +91,7 @@ export function CreateSupplierForm({
             <div>
               <Input
                 {...register("name")}
+                defaultValue={supplier.name}
                 placeholder="Compania Kubo"
                 className="w-full"
                 size="sm"
@@ -108,6 +109,7 @@ export function CreateSupplierForm({
               <div>
                 <Input
                   {...register("contact_email")}
+                  defaultValue={supplier.contact_email}
                   placeholder="compania@example.com"
                   className="w-full"
                   size="sm"
@@ -128,6 +130,7 @@ export function CreateSupplierForm({
                     const formatted = formatPhone(e.target.value);
                     setValue("phone", formatted);
                   }}
+                  defaultValue={supplier.phone}
                   placeholder="(14) 99999-9999"
                   className="w-full"
                   size="sm"
@@ -145,6 +148,7 @@ export function CreateSupplierForm({
             <div>
               <textarea
                 {...register("notes")}
+                defaultValue={supplier.notes}
                 placeholder="Fornecedor de roupas"
                 className="w-full border border-border rounded-md text-sm p-3 focus:outline-none focus:ring focus:ring-foreground/20"
               />
@@ -171,7 +175,7 @@ export function CreateSupplierForm({
             variant="indigo"
             disabled={isPending}
           >
-            Cadastrar
+            Editar
           </Button>
         </DialogFooter>
       </DialogContent>
