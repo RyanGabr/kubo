@@ -6,7 +6,7 @@ export function ProductsList() {
   const { data: products } = useProducts();
 
   return (
-    <div className="h-full p-5">
+    <div>
       <DataTable columns={columns} data={products!} />
     </div>
   );

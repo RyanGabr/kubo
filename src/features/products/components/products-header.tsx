@@ -5,16 +5,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { Plus } from "lucide-react";
-import { QuestionMarkCircleIcon, TagIcon } from "@heroicons/react/24/solid";
-import { CubeIcon } from "@heroicons/react/16/solid";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
+import { ProductFilledIcon } from "@shopify/polaris-icons";
+import { CreateProductForm } from "../create-product-form";
 
 export function ProductsHeader() {
   return (
     <div className="w-full py-2 px-6 flex items-center justify-between border-b border-border">
       <div className="flex items-center gap-2">
         <div className="p-1 rounded-md bg-indigo-400/10 w-fit">
-          <CubeIcon className="size-4 text-indigo-400" />
+          <ProductFilledIcon className="size-4 fill-indigo-400" />
         </div>
         <strong className="font-medium cursor-default text-sm">Produtos</strong>
       </div>
@@ -28,7 +28,7 @@ export function ProductsHeader() {
           <PopoverContent align="end">
             <div className="flex flex-col gap-3">
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <TagIcon className="size-4.5 text-indigo-400" />
+                <ProductFilledIcon className="size-4.5 fill-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 O que é a seção de produtos?
@@ -54,10 +54,7 @@ export function ProductsHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <Button variant="outline">
-          <Plus size={16} />
-          Cadastrar produto
-        </Button>
+        <CreateProductForm />
       </div>
     </div>
   );

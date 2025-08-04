@@ -15,7 +15,7 @@ export const columns: ColumnDef<ProductType>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           className="p-1 text-foreground/60"
         >
-          Código
+          Código (Sku)
           <ArrowUpDown size={12} />
         </Button>
       );
@@ -25,7 +25,7 @@ export const columns: ColumnDef<ProductType>[] = [
 
       return (
         <div className="pl-1 cursor-default uppercase text-foreground/60 truncate text-ellipsis max-w-52">
-          #{product_code}
+          {product_code}
         </div>
       );
     },

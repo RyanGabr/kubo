@@ -55,8 +55,8 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border border-border h-full">
-      <div className="flex items-center justify-between p-3 border-b">
+    <div>
+      <div className="flex items-center justify-between py-3 px-6 border-b">
         <div className="flex items-center gap-3">
           <Input
             placeholder="Filtrar nomes..."
@@ -96,7 +96,7 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id} className="bg-card">
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="px-5">
+                  <TableHead key={header.id} className="px-6">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -118,7 +118,7 @@ export function DataTable<TData, TValue>({
                 className="border-none"
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="py-4 px-5 text-[13px]">
+                  <TableCell key={cell.id} className="py-4 px-6 text-[13px]">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
