@@ -6,8 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { supabase } from "@/lib/supabase";
+import { CircleFadingArrowUp, LogOutIcon, Settings2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRightStartOnRectangleIcon, BoltIcon, UserIcon } from "@heroicons/react/24/solid";
 
 interface SidebarPerfilProps {
   avatarUrl: string;
@@ -34,9 +34,9 @@ export function SidebarPerfil({ avatarUrl, userFullName }: SidebarPerfilProps) {
         <div className="flex items-center justify-between p-2 rounded-md hover:bg-foreground/5 cursor-default">
           <div className="flex items-center gap-2">
             <div>
-              <img src={avatarUrl} alt="" className="w-6 rounded-md" />
+              <img src={avatarUrl} alt="" className="w-5.5 rounded-md" />
             </div>
-            <div className="text-sm font-medium truncate text-ellipsis max-w-28">
+            <div className="text-sm font-medium truncate text-ellipsis max-w-28 tracking-tight">
               {userFullName}
             </div>
           </div>
@@ -49,16 +49,16 @@ export function SidebarPerfil({ avatarUrl, userFullName }: SidebarPerfilProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem>
-          <BoltIcon />
+          <CircleFadingArrowUp />
           Upgrade PRO
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <UserIcon />
+          <Settings2 />
           Configurações da conta
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleLogout}>
-          <ArrowRightStartOnRectangleIcon />
+          <LogOutIcon />
           Sair
         </DropdownMenuItem>
       </DropdownMenuContent>

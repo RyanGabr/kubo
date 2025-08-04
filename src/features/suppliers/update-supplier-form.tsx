@@ -17,8 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUpdateSupplier } from "./hooks/use-suppliers";
-import { PencilIcon } from "@heroicons/react/24/solid";
-import { Loader2Icon } from "lucide-react";
+import { Loader2Icon, Pencil } from "lucide-react";
 
 interface UpdateSupplierFormProps {
   supplier: SuppliersType;
@@ -72,14 +71,13 @@ export function UpdateSupplierForm({ supplier }: UpdateSupplierFormProps) {
             e.preventDefault();
           }}
         >
-          <PencilIcon className="size-3.5" />
           Editar
         </ContextMenuItem>
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <PencilIcon className="size-3.5 text-indigo-400" />
+            <Pencil size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">Editar</DialogTitle>
         </DialogHeader>

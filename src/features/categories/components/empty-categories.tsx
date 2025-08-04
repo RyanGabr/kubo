@@ -1,12 +1,12 @@
-import { TagIcon } from "@heroicons/react/24/solid";
 import { CreateCategoryForm } from "../create-category-form";
+import { Layers3Icon } from "lucide-react";
 
 export function EmptyCategories() {
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="w-1/3 flex flex-col gap-8">
         <div className="p-2 rounded-lg bg-indigo-400/20 w-fit">
-          <TagIcon className="size-6 text-indigo-400" />
+          <Layers3Icon size={24} className="text-indigo-400" />
         </div>
         <div className="space-y-3">
           <h3 className="font-medium text-base">Categorias</h3>

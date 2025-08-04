@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/button";
 import { Separator } from "@/components/ui/separator";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { Info } from "lucide-react";
 
 interface SuppliersCardProps {
   supplier: SuppliersType;
@@ -24,7 +24,7 @@ export function SuppliersCard({ supplier }: SuppliersCardProps) {
       <ContextMenuTrigger>
         <div className="p-5 rounded-md border border-border bg-card flex items-center justify-between hover:bg-foreground/4">
           <div className="flex items-center gap-3">
-            <div className="size-9 rounded-full bg-foreground/20 flex items-center justify-center">
+            <div className="size-12 text-xl rounded-full bg-foreground/20 flex items-center justify-center">
               {supplier.name.split("")[0]}
             </div>
             <div>
@@ -40,13 +40,13 @@ export function SuppliersCard({ supplier }: SuppliersCardProps) {
             <Popover>
               <PopoverTrigger asChild>
                 <Button size="icon" variant="ghost">
-                  <InformationCircleIcon className="size-5 text-foreground/30" />
+                  <Info size={18} className="text-foreground/30" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent>
                 <div className="flex flex-col gap-3">
                   <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                    <InformationCircleIcon className="size-4.5 text-indigo-400" />
+                    <Info size={16} className="text-indigo-400" />
                   </div>
                   <strong className="font-medium text-sm">
                     Informações do fornecedor

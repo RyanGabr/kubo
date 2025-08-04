@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { Send } from "lucide-react";
 
 export function Feedback() {
   return (
@@ -19,7 +19,7 @@ export function Feedback() {
         />
         <div className="flex justify-end w-full">
           <Button variant="indigo">
-            <PaperAirplaneIcon className="size-3"/>
+            <Send size={16}/>
             Enviar feedback
           </Button>
         </div>

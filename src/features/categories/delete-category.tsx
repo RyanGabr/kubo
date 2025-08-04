@@ -11,10 +11,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { CategoriesType } from "@/types/categories";
-import { TrashIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useDeleteCategory } from "./hooks/use-categories";
-import { Loader2Icon } from "lucide-react";
+import { Loader2Icon, Trash2Icon } from "lucide-react";
 
 interface DeleteCategoryProps {
   category: CategoriesType;
@@ -37,14 +36,13 @@ export function DeleteCategory({ category }: DeleteCategoryProps) {
             e.preventDefault();
           }}
         >
-          <TrashIcon />
           Deletar
         </ContextMenuItem>
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <TrashIcon className="size-4 text-indigo-400" />
+            <Trash2Icon size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">Deletar</DialogTitle>
         </DialogHeader>

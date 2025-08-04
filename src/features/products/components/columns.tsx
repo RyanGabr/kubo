@@ -1,9 +1,8 @@
 import { Badge } from "@/components/badge";
 import { Button } from "@/components/button";
 import type { ProductType } from "@/types/products";
-import { TagIcon, TruckIcon } from "@heroicons/react/16/solid";
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, Layers3Icon, TruckIcon } from "lucide-react";
 
 export const columns: ColumnDef<ProductType>[] = [
   {
@@ -68,7 +67,7 @@ export const columns: ColumnDef<ProductType>[] = [
 
       return (
         <div className="text-foreground/60 flex items-center gap-1.5">
-          <TruckIcon className="size-4" />
+          <TruckIcon size={14} />
           <span className="truncate text-ellipsis max-w-52">
             {supplier?.name ?? ""}
           </span>
@@ -90,7 +89,7 @@ export const columns: ColumnDef<ProductType>[] = [
 
       return (
         <div className="text-foreground/60 flex items-center gap-1.5">
-          <TagIcon className="size-4" />
+          <Layers3Icon size={14} />
           <span className="truncate text-ellipsis max-w-52">
             {category?.name ?? ""}
           </span>

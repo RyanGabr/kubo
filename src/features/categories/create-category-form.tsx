@@ -19,9 +19,8 @@ import {
 } from "@/components/ui/select";
 import { categoryFormSchema } from "@/schemas/categories-schema";
 import type { CategoriesFormType } from "@/types/categories";
-import { TagIcon } from "@heroicons/react/24/solid";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2Icon, Plus } from "lucide-react";
+import { Layers3Icon, Loader2Icon, Plus } from "lucide-react";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useCreateCategory } from "./hooks/use-categories";
@@ -30,7 +29,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 export function CreateCategoryForm({
   buttonVariant,
 }: {
-  buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost";
+  buttonVariant: "default" | "destructive" | "indigo" | "outline" | "ghost" | "secondary";
 }) {
   const user = useUser();
   const { mutateAsync, isPending } = useCreateCategory();
@@ -73,7 +72,7 @@ export function CreateCategoryForm({
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <TagIcon className="size-4 text-indigo-400" />
+            <Layers3Icon size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">
             Nova categoria
@@ -151,7 +150,7 @@ export function CreateCategoryForm({
             </div>
           </div>
           <div className="space-y-2.5">
-            <Label>Anotação</Label>
+            <Label>Descrição</Label>
             <div>
               <textarea
                 {...register("description")}

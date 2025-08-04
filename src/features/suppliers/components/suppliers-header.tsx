@@ -6,14 +6,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { Info, Search } from "lucide-react";
+import { CircleQuestionMarkIcon, Info, Search, TruckIcon } from "lucide-react";
 import { CreateSupplierForm } from "../create-supplier-form";
 import { useSearchParams } from "react-router-dom";
-import {
-  InformationCircleIcon,
-  QuestionMarkCircleIcon,
-  TruckIcon,
-} from "@heroicons/react/24/solid";
 
 export function SuppliersHeader() {
   const [_, setSearchParams] = useSearchParams();
@@ -21,7 +16,14 @@ export function SuppliersHeader() {
   return (
     <div className="w-full py-2 px-6 flex items-center justify-between border-b border-border">
       <div className="flex items-center gap-3">
-        <strong className="font-medium cursor-default">Fornecedores</strong>
+        <div className="flex items-center gap-2">
+          <div className="p-1 rounded-md bg-indigo-400/10 w-fit">
+            <TruckIcon size={16} className="text-indigo-400" />
+          </div>
+          <strong className="font-medium cursor-default text-sm">
+            Fornecedores
+          </strong>
+        </div>
         <div className="h-6 w-px bg-border" />
         <div className="relative">
           <Search
@@ -40,13 +42,16 @@ export function SuppliersHeader() {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" className="text-foreground/60 p-1.5">
-              <QuestionMarkCircleIcon className="size-4.5 text-foreground/40" />
+              <CircleQuestionMarkIcon
+                size={16}
+                className="text-foreground/40"
+              />
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end">
             <div className="flex flex-col gap-3">
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <TruckIcon className="size-4.5 text-indigo-400" />
+                <TruckIcon size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 O que é a seção de fornecedores?
@@ -58,7 +63,7 @@ export function SuppliersHeader() {
               </p>
               <Separator />
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <QuestionMarkCircleIcon className="size-4.5 text-indigo-400" />
+                <CircleQuestionMarkIcon size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 Como editar ou excluir?
@@ -69,7 +74,7 @@ export function SuppliersHeader() {
                 entre as opções disponíveis.
               </p>
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <InformationCircleIcon className="size-4.5 text-indigo-400" />
+                <Info size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 Como ver informações de contato?

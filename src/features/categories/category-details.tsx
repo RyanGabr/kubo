@@ -1,19 +1,17 @@
 import { Button } from "@/components/button";
 import { ContextMenuItem } from "@/components/ui/context-menu";
 import {
-    Dialog,
-    DialogClose,
-    DialogContent, DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import type { CategoriesFormType } from "@/types/categories";
-import {
-    EyeIcon,
-    PencilIcon,
-    Square3Stack3DIcon,
-} from "@heroicons/react/24/solid";
+import { Square3Stack3DIcon } from "@heroicons/react/24/solid";
+import { EyeIcon } from "lucide-react";
 import { useState } from "react";
 
 interface CategoryDetailsProps {
@@ -32,14 +30,13 @@ export function CategoryDetails({ category }: CategoryDetailsProps) {
             e.preventDefault();
           }}
         >
-          <EyeIcon />
           Ver detalhes
         </ContextMenuItem>
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card w-md">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <PencilIcon className="size-4 text-indigo-400" />
+            <EyeIcon size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">Detalhes</DialogTitle>
         </DialogHeader>

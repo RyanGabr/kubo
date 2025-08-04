@@ -1,11 +1,5 @@
 import { Button } from "@/components/button";
 import {
-  AdjustmentsHorizontalIcon, HashtagIcon,
-  Square3Stack3DIcon,
-  Squares2X2Icon,
-  TruckIcon
-} from "@heroicons/react/24/solid";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -14,7 +8,14 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Plus } from "lucide-react";
+import {
+  BlocksIcon,
+  FilterIcon,
+  HashIcon,
+  Layers3Icon,
+  Plus,
+  TruckIcon,
+} from "lucide-react";
 import { Input } from "@/components/input";
 import { useCategories } from "@/features/categories/hooks/use-categories";
 import { useSuppliers } from "@/features/suppliers/hooks/use-suppliers";
@@ -36,15 +37,15 @@ export function ProductsFilterDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-1.5" variant="ghost">
-          <AdjustmentsHorizontalIcon className="size-4" />
+        <Button className="p-1.5" variant="ghost" size="md">
+          <FilterIcon size={14} />
           Filtros
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-52" align="start">
         <DropdownMenuSub>
           <DropdownMenuSubTrigger className="gap-2">
-            <Square3Stack3DIcon className="size-4 text-foreground/60" />
+            <Layers3Icon size={16} className="text-foreground/60" />
             Categoria
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
@@ -61,7 +62,7 @@ export function ProductsFilterDropdown() {
         </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger className="gap-2">
-            <TruckIcon className="size-4 text-foreground/60" />
+            <TruckIcon size={16} className="text-foreground/60" />
             Fornecedor
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent className="min-w-48">
@@ -92,7 +93,7 @@ export function ProductsFilterDropdown() {
         </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger className="gap-2">
-            <Squares2X2Icon className="size-4 text-foreground/60" />
+            <BlocksIcon size={16} className="text-foreground/60" />
             Quantidade
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent className="flex items-center gap-1">
@@ -104,7 +105,7 @@ export function ProductsFilterDropdown() {
         </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger className="gap-2">
-            <HashtagIcon className="size-4 text-foreground/60" />
+            <HashIcon size={16} className="text-foreground/60" />
             Código
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent className="flex items-center gap-1">

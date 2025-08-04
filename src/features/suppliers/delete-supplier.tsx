@@ -13,8 +13,7 @@ import {
 import type { SuppliersType } from "@/types/suppliers";
 import { useState } from "react";
 import { useDeleteSupplier } from "./hooks/use-suppliers";
-import { TrashIcon } from "@heroicons/react/24/solid";
-import { Loader2Icon } from "lucide-react";
+import { Loader2Icon, Trash2Icon } from "lucide-react";
 
 interface DeleteSupplierProps {
   supplier: SuppliersType;
@@ -42,14 +41,13 @@ export function DeleteSupplier({ supplier }: DeleteSupplierProps) {
             e.preventDefault();
           }}
         >
-          <TrashIcon className="size-3.5" />
           Deletar
         </ContextMenuItem>
       </DialogTrigger>
       <DialogContent className="p-0 gap-0 rounded-xl bg-card">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <TrashIcon className="size-4 text-indigo-400" />
+            <Trash2Icon size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">Excluir</DialogTitle>
         </DialogHeader>

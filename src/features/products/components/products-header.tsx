@@ -5,16 +5,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
-import { ProductFilledIcon } from "@shopify/polaris-icons";
 import { CreateProductForm } from "../create-product-form";
+import { BoxIcon, CircleQuestionMark } from "lucide-react";
 
 export function ProductsHeader() {
   return (
     <div className="w-full py-2 px-6 flex items-center justify-between border-b border-border">
       <div className="flex items-center gap-2">
         <div className="p-1 rounded-md bg-indigo-400/10 w-fit">
-          <ProductFilledIcon className="size-4 fill-indigo-400" />
+          <BoxIcon size={16} className="text-indigo-400" />
         </div>
         <strong className="font-medium cursor-default text-sm">Produtos</strong>
       </div>
@@ -22,13 +21,13 @@ export function ProductsHeader() {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" className="text-foreground/60 p-1.5">
-              <QuestionMarkCircleIcon className="size-4.5 text-foreground/40" />
+              <CircleQuestionMark size={16} className="text-foreground/40" />
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end">
             <div className="flex flex-col gap-3">
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <ProductFilledIcon className="size-4.5 fill-indigo-400" />
+                <BoxIcon size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 O que é a seção de produtos?
@@ -41,7 +40,7 @@ export function ProductsHeader() {
               </p>
               <Separator />
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <QuestionMarkCircleIcon className="size-4.5 text-indigo-400" />
+                <CircleQuestionMark size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 Como editar ou excluir?

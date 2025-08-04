@@ -10,8 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { ProductFilledIcon } from "@shopify/polaris-icons";
-import { Loader2Icon, Plus } from "lucide-react";
+import { BoxIcon, Loader2Icon, Plus } from "lucide-react";
 import { CategorySelect } from "./components/category-select";
 import { Controller, useForm } from "react-hook-form";
 import { SupplierSelect } from "./components/supplier-select";
@@ -68,7 +67,7 @@ export function CreateProductForm() {
       <DialogContent className="p-0 gap-0 rounded-xl bg-card sm:max-w-3xl">
         <DialogHeader className="py-4 px-5 border-b flex-row items-center gap-2">
           <div className="bg-indigo-400/10 rounded-md p-1 w-fit">
-            <ProductFilledIcon className="size-4 fill-indigo-400" />
+            <BoxIcon size={16} className="text-indigo-400" />
           </div>
           <DialogTitle className="text-sm font-medium">
             Cadastrar produto

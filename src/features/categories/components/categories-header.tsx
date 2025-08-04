@@ -6,9 +6,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { Search } from "lucide-react";
+import { Layers3Icon, Search, CircleQuestionMarkIcon } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-import { QuestionMarkCircleIcon, TagIcon } from "@heroicons/react/24/solid";
 import { CreateCategoryForm } from "../create-category-form";
 
 export function CategoriesHeader() {
@@ -17,7 +16,14 @@ export function CategoriesHeader() {
   return (
     <div className="w-full py-2 px-6 flex items-center justify-between border-b border-border">
       <div className="flex items-center gap-3">
-        <strong className="font-medium cursor-default text-sm">Categorias</strong>
+        <div className="flex items-center gap-2">
+          <div className="p-1 rounded-md bg-indigo-400/10 w-fit">
+            <Layers3Icon size={16} className="text-indigo-400" />
+          </div>
+          <strong className="font-medium cursor-default text-sm">
+            Categorias
+          </strong>
+        </div>
         <div className="h-6 w-px bg-border" />
         <div className="relative">
           <Search
@@ -36,13 +42,13 @@ export function CategoriesHeader() {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" className="text-foreground/60 p-1.5">
-              <QuestionMarkCircleIcon className="size-4.5 text-foreground/40" />
+              <CircleQuestionMarkIcon size={16} className="text-foreground/40" />
             </Button>
           </PopoverTrigger>
           <PopoverContent align="end">
             <div className="flex flex-col gap-3">
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <TagIcon className="size-4.5 text-indigo-400" />
+                <Layers3Icon size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 O que é a seção de categoria?
@@ -54,7 +60,7 @@ export function CategoriesHeader() {
               </p>
               <Separator />
               <div className="p-1.5 rounded-md bg-indigo-400/10 w-fit">
-                <QuestionMarkCircleIcon className="size-4.5 text-indigo-400" />
+                <CircleQuestionMarkIcon size={16} className="text-indigo-400" />
               </div>
               <strong className="font-medium text-sm">
                 Como editar ou excluir?
@@ -67,7 +73,7 @@ export function CategoriesHeader() {
             </div>
           </PopoverContent>
         </Popover>
-        <CreateCategoryForm buttonVariant="outline"/>
+        <CreateCategoryForm buttonVariant="outline" />
       </div>
     </div>
   );

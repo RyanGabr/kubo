@@ -1,25 +1,25 @@
 import { Sidebar } from "@/components/layout/sidebar";
 import { useUser } from "@supabase/auth-helpers-react";
 import { Outlet, useLocation } from "react-router-dom";
+
 import {
-  Square3Stack3DIcon,
-  CubeIcon,
-  TruckIcon,
-  TagIcon,
-  Cog6ToothIcon,
-  PaperAirplaneIcon,
-} from "@heroicons/react/24/solid";
+  BoxIcon,
+  BrainIcon,
+  Layers3Icon,
+  Send, SettingsIcon,
+  TruckIcon
+} from "lucide-react";
 
 const workspaceItems = [
-  { label: "Visão geral", href: "/overview", icon: Square3Stack3DIcon },
-  { label: "Produtos", href: "/products", icon: CubeIcon },
+  { label: "Visão geral", href: "/overview", icon: BrainIcon },
+  { label: "Produtos", href: "/products", icon: BoxIcon },
   { label: "Fornecedores", href: "/suppliers", icon: TruckIcon },
-  { label: "Categorias", href: "/categories", icon: TagIcon },
+  { label: "Categorias", href: "/categories", icon: Layers3Icon },
 ];
 
 const preferencesItems = [
-  { label: "Configurações", href: "/settings", icon: Cog6ToothIcon },
-  { label: "Enviar feedback", href: "/feedback", icon: PaperAirplaneIcon },
+  { label: "Configurações", href: "/settings", icon: SettingsIcon },
+  { label: "Enviar feedback", href: "/feedback", icon: Send },
 ];
 
 export function Layout() {
@@ -47,7 +47,7 @@ export function Layout() {
                   location.pathname === item.href ? "bg-foreground/10" : ""
                 }
               >
-                <IconName className="size-4.5 text-foreground/60" />
+                <IconName size={18} className="text-foreground/60" />
                 {item.label}
               </Sidebar.Item>
             );
@@ -66,7 +66,7 @@ export function Layout() {
                   location.pathname === item.href ? "bg-foreground/10" : ""
                 }
               >
-                <IconName className="size-4.5 text-foreground/60" />
+                <IconName size={18} className="text-foreground/60" />
                 {item.label}
               </Sidebar.Item>
             );
